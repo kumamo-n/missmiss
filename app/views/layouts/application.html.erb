@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<title>MIS COLLE</title>
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<%= csrf_meta_tags %>
+</head>
+<body>
+  <nav class="navbar navbar-fixed-top navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">MISS COLLE(仮)
+        </a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+         <% if user_signed_in? %>
+         <li> <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+         <span class="sr-only">(current)</span></li>
+          <li><a class="post" href="/yj/new">投稿する</a>
+         <% else %>
+          <li><%= link_to "ログイン", new_user_session_path, class: 'post' %> <span class="sr-only">(current)</span></li>
+          <li><%= link_to "新規登録", new_user_registration_path, class: 'post' %></li>
+          <li><%= link_to "contact",new_user_registration_path,class: 'post' %></li>
+            <% end %>
+        </ul>
+        <form class="navbar-form navbar-right" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="search">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        
+
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+ 
+
+
+  
+
+  <%= yield %>
+  
+  <footer>
+      <p>
+        Copyright YJ 2014.
+      </p>
+    </footer>
+
+</body>
+  </html>
